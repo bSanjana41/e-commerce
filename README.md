@@ -259,18 +259,24 @@ Common errors:
 
 ## Testing with Postman
 
-I've included a Postman collection file (`E-Commerce-API.postman_collection.json`) that has all the endpoints set up.
+I've included a Postman collection file (`E-Commerce-API.postman_collection.json`) that has all the endpoints set up with hardcoded URLs (`http://localhost:5500/api`).
 
 To use it:
 1. Open Postman
 2. Click "Import" button
 3. Select the `E-Commerce-API.postman_collection.json` file
-4. Set up environment variables (or use the collection variables):
-   - `base_url`: `http://localhost:5500`
-   - `user_token`: This gets set automatically when you login as a user
-   - `admin_token`: This gets set automatically when you login as admin
+4. All URLs are pre-configured - no setup needed!
 
-The collection has scripts that automatically save tokens after login, so you don't have to copy-paste them manually.
+**Collection Variables (automatically managed):**
+- `user_token`: Automatically saved when you login as a user (used in Authorization headers)
+- `admin_token`: Automatically saved when you login as admin (used in Authorization headers)
+- `order_id`: Automatically saved when you create an order via checkout (used in payment endpoint)
+
+**How it works:**
+- The collection has test scripts that automatically capture tokens and order IDs from responses
+- After login, tokens are saved automatically - you don't need to copy-paste them
+- After checkout, the order ID is saved automatically for the payment endpoint
+- Just run the requests in order: Register/Login → Add to Cart → Checkout → Process Payment
 
 ## Implementation Notes
 
